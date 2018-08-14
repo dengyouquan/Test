@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    name: ${NAME:sakila}
+    username: ${USER_NAME:root}
+    password: ${PASSWORD:123456}
+    url: jdbc:mysql://${MYSQL_IP:localhost}:${MYSQL_PORT:3306}/${NAME:sakila}?useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+mapper:
+  identity: MYSQL
+
+server:
+  port: 8081
+
