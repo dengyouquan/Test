@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/cities")
-public class CityController extends BaseControllerConsumer<City> {
+public class CityControllerConsumer extends BaseControllerConsumer<City> {
     @Override
     String getUrlName() {
         return "cities";
