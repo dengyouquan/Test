@@ -10,18 +10,18 @@ mapper:
   identity: MYSQL
 
 server:
-  port: 8081
+  port: 8082
 
 eureka:
   client: #客户端注册进eureka服务列表内
     service-url:
       defaultZone: http://eureka1.com:7997/eureka,http://eureka2.com:7998/eureka,http://eureka3.com:7999/eureka
   instance:
-    instance-id: microservice-privoder-8081 #eureka控制界面微服务显示名字
+    instance-id: microservice-privoder-8082 #eureka控制界面微服务显示名字
     prefer-ip-address: true #访问路径可以显示IP地址
 
 info:
-  app.name: microservice-provider-8081
+  app.name: microservice-provider-8082
   company.name: com.hand
   build.artifactId: $parent.artifactId$
   build.version: $parent.version$
