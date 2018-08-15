@@ -1,17 +1,26 @@
-# 介绍
-
-## microservice-api
-
-基本模块，里面放了实体类
+# eureka
 
 ## microservice-provider-8081
 
-服务提供者，从数据库读取数据
+服务提供者，eureka-client
 
-## microservice-provider-8080
+## microservice-eureka-server-7999
 
-服务消费者，从服务提供者的到数据
+eureka-server
 
-## sh
+## microservice-eureka-server-7998
 
-下面有许多测试shell，记得get.sh后面要跟id,同理update.sh,create.sh后面都要跟id
+eureka-server
+
+## microservice-eureka-server-7997
+
+eureka-server
+
+hosts增加
+
+```java
+127.0.0.1 eureka1.com
+127.0.0.1 eureka2.com
+127.0.0.1 eureka3.com
+```
+

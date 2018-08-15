@@ -22,6 +22,9 @@ public abstract class BaseControllerConsumer<V extends BaseEntity> {
     @Autowired
     protected RestTemplate restTemplate;
 
+    //@Autowired
+    //protected DiscoveryClient client;
+
     @PostMapping
     public V create(@RequestBody V v) {
         v.setLastUpdate(new Date());
@@ -57,4 +60,15 @@ public abstract class BaseControllerConsumer<V extends BaseEntity> {
         logger.info("restTemplate getAll " + getEntityClass().getSimpleName() + " pageSize:" + pageSize + ",pageNum:" + pageNum);
         return restTemplate.getForObject(REST_URL_PREFIX + getUrlName(), List.class, pageNum, pageSize);
     }
+
+    /*@GetMapping("cities/discovery")
+    public Object discovery() {
+        List<String> list = client.getServices();
+        List<ServiceInstance> serviceInstances = client.getInstances("provider8081");
+        for (ServiceInstance serviceInstance : serviceInstances) {
+            logger.info(serviceInstance.getServiceId() + "\t" + serviceInstance.getHost() + "\t" +
+                    serviceInstance.getPort() + "\t" + serviceInstance.getUri());
+        }
+        return client;
+    }*/
 }

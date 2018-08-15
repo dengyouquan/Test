@@ -5,6 +5,8 @@ import com.hand.domain.entity.BaseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -15,6 +17,9 @@ public abstract class BaseController<V extends BaseEntity, T extends BaseService
 
     @Autowired
     protected T service;
+
+    //@Autowired
+    //protected DiscoveryClient client;
 
     public abstract Class getEntityClass();
 
@@ -54,4 +59,15 @@ public abstract class BaseController<V extends BaseEntity, T extends BaseService
         logger.info("getAll " + getEntityClass().getSimpleName() + " pageSize:" + pageSize + ",pageNum:" + pageNum);
         return service.list(pageNum, pageSize);
     }
+
+    /*@GetMapping("cities/discovery")
+    public Object discovery() {
+        List<String> list = client.getServices();
+        List<ServiceInstance> serviceInstances = client.getInstances("provider8081");
+        for (ServiceInstance serviceInstance : serviceInstances) {
+            logger.info(serviceInstance.getServiceId() + "\t" + serviceInstance.getHost() + "\t" +
+                    serviceInstance.getPort() + "\t" + serviceInstance.getUri());
+        }
+        return client;
+    }*/
 }
