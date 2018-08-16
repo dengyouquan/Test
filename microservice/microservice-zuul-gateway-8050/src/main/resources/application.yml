@@ -1,0 +1,28 @@
+server:
+  port: 8050
+
+spring:
+  application:
+    name: microservice-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1.com:7997/eureka,http://eureka2.com:7998/eureka,http://eureka3.com:7999/eureka
+  instance:
+    instance-id: zuul-8050
+    prefer-ip-address: true
+
+zuul:
+  prefix: /hand #加统一前缀,记得加/
+  ignored-services: "*" #原路径不能访问
+  routes:
+    mydept.serviceId: microservice-privoder
+    mydept.path: /microservice/**
+
+info:
+  app.name: gateway.com
+  company.name: com.hand
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
