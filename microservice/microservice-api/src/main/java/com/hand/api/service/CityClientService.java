@@ -1,12 +1,13 @@
 package com.hand.api.service;
 
+import com.hand.api.factory.CityClientServiceFallBackFactory;
 import com.hand.domain.entity.City;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(value = "microservice-privoder")
+@FeignClient(value = "microservice-privoder",fallbackFactory = CityClientServiceFallBackFactory.class)
 @RequestMapping("/api/cities")
 public interface CityClientService {
     @PostMapping

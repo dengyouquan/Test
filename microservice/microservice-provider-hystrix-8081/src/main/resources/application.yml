@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: microservice-privoder #三个名字不能改
+  datasource:
+    name: ${NAME:sakila}
+    username: ${USER_NAME:root}
+    password: ${PASSWORD:123456}
+    url: jdbc:mysql://${MYSQL_IP:localhost}:${MYSQL_PORT:3306}/${NAME:sakila}?useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true
+mapper:
+  identity: MYSQL
+
+server:
+  port: 8081
+
+feign:
+  hystrix:
+    enabled: true
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka1.com:7997/eureka,http://eureka2.com:7998/eureka,http://eureka3.com:7999/eureka
+  instance:
+    instance-id: microservice-privoder-hystrix-8081 #eureka控制界面微服务显示名字
+    prefer-ip-address: true #访问路径可以显示IP地址
+
+info:
+  app.name: microservice-provider-8081
+  company.name: com.hand
+  build.artifactId: $parent.artifactId$
+  build.version: $parent.version$
+
+
+
+
+

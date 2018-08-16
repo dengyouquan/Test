@@ -42,6 +42,7 @@ public class CityControllerConsumer {
     }
 
     @GetMapping("/{id}")
+    //@RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public City get(@PathVariable("id") Short id) {
         City city = service.get(id);
         logger.info("feign get city:" + city);
@@ -52,6 +53,6 @@ public class CityControllerConsumer {
     public List<City> list(@RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum
             , @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
         logger.info("feign getAll");
-        return service.list(pageNum,pageSize);
+        return service.list(pageNum, pageSize);
     }
 }
